@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+  }
+  
+  .navbar {
+    background-color: #a72e2e;
+  }
+  .navbar-logo-img {
+    width: 125px;
+    margin: 25px;
+  }
+  .navbar h2 {
+    margin-left: 10px;
+    color: #ffffff;
+  }
+  .navbar-categorias {
+    width: 100%;
+    padding-top: 10px
+  }
+  .navbar-categorias ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  .categoria-item a{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+  }
+  .categoria-item a:hover{
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 30px;
+  
+  }
+  .container-nav {
+    justify-content: space-around !important;
+  }
+  
+  .cart {
+    position: relative;
+  }
+  
+  #cart_menu_num {
+    position: absolute;
+    top: -20%;
+    left: 69%;
+    background: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: color_white;
+    padding: 2px;
+  }
+  
+  .nav-social img {
+    width: 40px;
+    margin-left: 10px;
+  }
+  
+  @media (min-width: 576px) {
+    .navbar-nav {
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+
+.itemDetail {
+    max-width: 740px;
+    margin-top: 10px;
+}

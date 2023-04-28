@@ -1,0 +1,60 @@
+[{
+    "id": 1,
+    "idCategoria": 2,
+    "nombre": "Mustang",
+    "marca": "Ford",
+    "modelo": "Mach-1",
+    "precio": 36475000,
+    "stock" : 7,
+    "img": "/img/mustang.jpg"
+  },
+  {
+    "id": 2,
+    "idCategoria": 2,
+    "nombre": "M3",
+    "marca": "BMW",
+    "modelo": "xDrive Sedán",
+    "precio": 37755000,
+    "stock" : 3,
+    "img": "/img/m3.jpg"
+  },
+  {
+    "id": 3,
+    "idCategoria": 1,
+    "nombre": "Kübelwagen",
+    "marca": "Volkswagen",
+    "modelo": "Fritz",
+    "precio": 10000000,
+    "stock" : 1,
+    "img": "/img/kubel.jpg"
+  },
+  {
+    "id": 4,
+    "idCategoria": 1,
+    "nombre": "Blitz",
+    "marca": "Opel",
+    "modelo": "Truck",
+    "precio": 1000000,
+    "stock" : 21,
+    "img": "/img/opel.webp"
+  }, 
+  {
+    "id": 5,
+    "idCategoria": 3,
+    "nombre": "Corsa",
+    "marca": "Chevrolet",
+    "modelo": "Classic",
+    "precio": 561000000,
+    "stock" : 5,
+    "img": "/img/corsa.jpg"
+  },
+  {
+    "id": 6,
+    "idCategoria": 2,
+    "nombre": "370",
+    "marca": "Nissan",
+    "modelo": "Z",
+    "precio": 25000000,
+    "stock" : 10,
+    "img": "/img/370.webp"
+  }]
