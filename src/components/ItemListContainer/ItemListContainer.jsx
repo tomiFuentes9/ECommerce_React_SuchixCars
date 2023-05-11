@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { ItemList } from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 
-// Conuslta a mis productos de mi base de datos y se los envio a ItemList.
 
 export const ItemListContainer = () => {
   
