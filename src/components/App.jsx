@@ -5,6 +5,7 @@ import { ItemDetailContainer } from './ItemDetailContainer/ItemDetailContainer'
 import { ItemListContainer } from './ItemListContainer/ItemListContainer'
 import { Navbar } from './Navbar/Navbar'
 import { Checkout } from './Checkout/Checkout'
+import { Cart } from './Cart/Cart'
 
 
 export const App = () => {
@@ -16,6 +17,7 @@ export const App = () => {
              <Route path='/' element={<ItemListContainer/>}/>
              <Route path='/category/:category' element={<ItemListContainer/>}/>
              <Route path='/product/:id' element={<ItemDetailContainer/>}/>
+             <Route path='/cart' element={<Cart />}/>
              <Route path='/checkout' element={<Checkout/>}/>
             </Routes>
         </BrowserRouter>
