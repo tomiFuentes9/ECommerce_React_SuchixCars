@@ -1,16 +1,54 @@
 import { useRef } from "react"
 import { useCartContext } from "../../context/CartContext"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+import { createOrdenDeCompra, getOrdenDeCompra, getProduct, updateProd } from "../../firebase/firebase"
 export const Checkout = () => {
 
     const datForm = useRef()
     const { totalPrice, cleanCart, cartList } = useCartContext()
+    let navigate = useNavigate()
 
     const consultarForm = (e) => {
         e.preventDefault()
         const datosForm = new FormData(datForm.current)
         const formCliente = Object.fromEntries(datosForm)
-        e.target.reset()
+        
+        const cart = [...cartList]
+
+        cart.forEach(prodCarrito => {
+            getProduct(prodCarrito.id).then(prodBBD => {
+                if (prodBBD.stock >= prodCarrito.quantity) {
+                    prodBBD.stock -= prodCarrito.quantity
+                    updateProd(prodBBD.id, prodBBD) 
+                } else {
+                    console.log("La cantidad de autos que selecciono supera el stock actual")
+                }
+            })
+        })
+        
+        const cartFiltered = cart.map(prod => ({ id: prod.id, quantity: prod.quantity, precio: prod.precio }));
+
+        createOrdenDeCompra(formCliente, totalPrice(), cartFiltered, new Date().toLocaleString('es-AR', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }))
+            .then(ordenCompra => {toast(`Muchas gracias por comprar con nosotros!!!  Tu compra fue por un total de ${totalPrice()}, nos contactaremos en breve a los datos indicados, para acercarte el NRO de orden y coordinar el envio/retiro de el/los vehiculos`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                cleanCart()
+                e.target.reset() 
+                navigate("/") 
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+
     }
     return (
         <>
