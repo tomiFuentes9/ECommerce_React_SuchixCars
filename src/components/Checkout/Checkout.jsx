@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useCartContext } from "../../context/CartContext"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
@@ -10,27 +10,44 @@ export const Checkout = () => {
     let navigate = useNavigate()
 
     const consultarForm = (e) => {
+        const form = datForm.current;
+
+        if (!form.checkValidity()) {
+            toast.error(`Debes llenar todos los campos del formulario antes de enviarlo`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+            });
+            return;
+        }
+
         e.preventDefault()
         const datosForm = new FormData(datForm.current)
         const formCliente = Object.fromEntries(datosForm)
-        
+
         const cart = [...cartList]
 
         cart.forEach(prodCarrito => {
             getProduct(prodCarrito.id).then(prodBBD => {
                 if (prodBBD.stock >= prodCarrito.quantity) {
                     prodBBD.stock -= prodCarrito.quantity
-                    updateProd(prodBBD.id, prodBBD) 
+                    updateProd(prodBBD.id, prodBBD)
                 } else {
                     console.log("La cantidad de autos que selecciono supera el stock actual")
                 }
             })
         })
-        
+
         const cartFiltered = cart.map(prod => ({ id: prod.id, quantity: prod.quantity, precio: prod.precio }));
 
         createOrdenDeCompra(formCliente, totalPrice(), cartFiltered, new Date().toLocaleString('es-AR', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }))
-            .then(ordenCompra => {toast(`Muchas gracias por comprar con nosotros!!!  Tu compra fue por un total de ${totalPrice()}, nos contactaremos en breve a los datos indicados, para acercarte el NRO de orden y coordinar el envio/retiro de el/los vehiculos`, {
+            .then(ordenCompra => {
+                toast(`Muchas gracias por comprar con nosotros!!!  Tu compra fue por un total de ${totalPrice()}, nos contactaremos en breve a los datos indicados, para acercarte el NRO de orden y coordinar el envio/retiro de el/los vehiculos`, {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -41,8 +58,8 @@ export const Checkout = () => {
                     theme: "dark",
                 });
                 cleanCart()
-                e.target.reset() 
-                navigate("/") 
+                e.target.reset()
+                navigate("/")
             })
             .catch(error => {
                 console.error(error)
@@ -51,7 +68,7 @@ export const Checkout = () => {
 
     }
     return (
-        <>
+        <> 
             {
                 cartList.length === 0 ?
                     <>
@@ -65,27 +82,27 @@ export const Checkout = () => {
                         <form onSubmit={consultarForm} ref={datForm}>
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label"> Nombre Completo</label>
-                                <input type="text" className="form-control" name="nombre" />
+                                <input type="text" className="form-control" name="nombre" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label"> Mail</label>
-                                <input type="email" className="form-control" name="mail" />
+                                <input type="email" className="form-control" name="mail" required  />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Repetir Mail</label>
-                                <input type="email" className="form-control" name="mailRep" />
+                                <input type="email" className="form-control" name="mailRep" required  />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="dni" className="form-label">DNI o nro de documento</label>
-                                <input type="number" className="form-control" name="nroDoc" />
+                                <input type="number" className="form-control" name="nroDoc" required  />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="tel" className="form-label">Telefono de contacto</label>
-                                <input type="number" className="form-control" name="cel" />
+                                <input type="number" className="form-control" name="cel" required  />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="direc" className="form-label">Direccion</label>
-                                <input type="text" className="form-control" name="direc" />
+                                <input type="text" className="form-control" name="direc" required  />
                             </div>
                             <button type="submit" className="btn btn-dark">Terminar compra</button>
                         </form>

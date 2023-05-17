@@ -33,3 +33,7 @@ Este projecto fue creado con:
 * [React] (https://react.dev/) - Framework front end.
 * [Firebase] (https://firebase.google.com/?hl=es) - Base de datos y servidor.
 * [Toatify] (https://fkhadra.github.io/react-toastify/introduction) - Notificaciones de la appweb.
+
+## Link a GIF/Video del Ecommerce
+
+https://drive.google.com/drive/folders/1nLBy-onvutdKQeGwEVysTURE0cX0ZBpY?usp=share_link
