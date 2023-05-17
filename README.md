@@ -17,11 +17,12 @@ Los links hacia los repositorios/paginas de estas dependencias seran indicados a
 ## Ejecutando la app
 
 Una vez instalado React y todas las dependencias ya mencionadas es necesario ejecutar el siguiente comando en la consola/terminal de tu editor de código:
-``
+
+````
 
 npm start
 
-``
+````
 
 Una vez hecho esto se abrira automaticamente, o en caso de que no suceda debemos dirigirnos al, localhost:3000
 
