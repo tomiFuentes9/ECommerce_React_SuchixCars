@@ -28,9 +28,7 @@ App.test
 
 Webvitals
 
-ogo
-
-*logo
+logo
 
 setupTest
 

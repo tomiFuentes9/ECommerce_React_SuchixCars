@@ -1,14 +1,31 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, addDoc, getDoc, getDocs, deleteDoc, updateDoc, collection, doc } from 'firebase/firestore'
 
+/*
+REACT_APP_apiKey
+REACT_APP_authDomain
+REACT_APP_projectId
+REACT_APP_storageBucket
+REACT_APP_messagingSenderId
+REACT_APP_appId
+Probe utilizar las variables de entorno pero lamentablemente el CORB de google no me permite traer productos de la base de datos :( 
+
+Los errores en cuestion:
+
+Cross-Origin Read Blocking (CORB) blocked cross-origin response https://console.firebase.google.com/project/ecommerce-39655-suchanmauro/storage/ecommerce-39655-suchanmauro.appspot.com/files?hl=es with MIME type text/html. See https://www.chromestatus.com/feature/5629709824032768 for more details.
+
+logger.ts:115 [2023-05-17T00:24:02.048Z]  @firebase/firestore: Firestore (9.22.0): Could not reach Cloud Firestore backend. Connection failed 1 times. Most recent error: FirebaseError: [code=permission-denied]: Permission denied: Consumer 'project:undefined' has been suspended.
+This typically indicates that your device does not have a healthy Internet connection at the moment. The client will operate in offline mode until it is able to successfully connect to the backend.
+
+*/
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId
+  apiKey: "AIzaSyCbXb7Boa8OW_MRi1ipUv3rIspDOW7wDHg",
+  authDomain: "ecommerce-39655-suchanmauro.firebaseapp.com",
+  projectId: "ecommerce-39655-suchanmauro",
+  storageBucket: "ecommerce-39655-suchanmauro.appspot.com",
+  messagingSenderId: "836046374285",
+  appId: "1:836046374285:web:11f0c9fed34b21965aa9c4"
 };
 
 const app = initializeApp(firebaseConfig);
