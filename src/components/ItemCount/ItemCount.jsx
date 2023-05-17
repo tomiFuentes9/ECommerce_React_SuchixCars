@@ -7,7 +7,7 @@ export const ItemCount = ({ValInicial, min, max, onAdd}) => {
           <button className="btn btn-dark" onClick={res}>-</button>
                  {count}
           <button className="btn btn-dark" onClick={sum}>+</button>
-          <button className="btn btn-light" onClick={reset}>Limpiar carrito</button>
+          <button className="btn btn-light" onClick={reset}>Resetear contador</button>
           <button className="btn btn-dark" onClick={() => onAdd(count)}>Agregar a compra</button>
      </>
    )
